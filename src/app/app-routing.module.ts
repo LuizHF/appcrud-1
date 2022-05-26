@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'cliente',
+    loadChildren: () => import('./paginas/cliente/cliente.module').then( m => m.ClientePageModule)
+  },
+  {
+    path: 'modal-cliente',
+    loadChildren: () => import('./paginas/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
   }
 ];
 
