@@ -1,6 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface Produto{
+  id: number;
+  descricao: string;
+  valor: number;
+}
+
 export interface Cliente{
   id: number;
   nome: string;
@@ -11,6 +17,14 @@ export interface Cliente{
 @Injectable({
   providedIn: 'root'
 })
+
+export class ProdutoService {
+
+  private url = 'http;//localhost/apiAppCrud/apiProduto.php';
+
+  constructor(private htpp: HttpClient ) { }
+}
+
 export class ClienteService {
 
   private url = 'http;//localhost/apiAppCrud/apiCliente';
@@ -27,5 +41,9 @@ export class ClienteService {
 
   create(cliente: Cliente) {
     return this.htpp.post(this.url, cliente)
+  }
+
+  update (cliente: Cliente, id: any) {
+    return this.htpp.put(this.url+'?id=' + id, cliente);
   }
 }

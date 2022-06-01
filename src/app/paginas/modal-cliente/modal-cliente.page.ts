@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { ClienteService } from 'src/app/servicos/cliente.service';
+import { Cliente, ClienteService } from 'src/app/servicos/cliente.service';
 
 @Component({
   selector: 'app-modal-cliente',
@@ -8,10 +9,20 @@ import { ClienteService } from 'src/app/servicos/cliente.service';
   styleUrls: ['./modal-cliente.page.scss'],
 })
 export class ModalClientePage implements OnInit {
-
+    @Input() c:Cliente;
+    atualizar = false;
+    dadosCliente = {
+      nome: '',
+      telefone: '',
+      endereco: ''
+    };
   constructor( private modalCtrl: ModalController, private service: ClienteService) { }
 
   ngOnInit() {
+    if(this.c){
+      this.dadosCliente = this.c;
+      this.atualizar = true;
+    }
   }
 
   fecharModal(){
@@ -19,9 +30,14 @@ export class ModalClientePage implements OnInit {
   }
   enviarFormulario(form: NgForm){
     const cliente = form.value;
+    if(this.atualizar){
     this.service.create(cliente).subscribe(resposta => {
       this.modalCtrl.dismiss();
-    })
+    });
+  }else{
+    this.service.create(cliente).subscribe(reposta => {
+      this.modalCtrl.dismiss();
+    });
   }
-
+}
 }

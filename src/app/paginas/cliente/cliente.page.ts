@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import { Cliente, ClienteService } from 'src/app/servicos/cliente.service';
+import { ModalClientePage } from '../modal-cliente/modal-cliente.page';
 
 @Component({
   selector: 'app-cliente',
@@ -38,4 +39,18 @@ export class ClientePage implements OnInit {
       });
     });
   }
+    atualizar(c:Cliente) {
+      this.modalCtrl.create({
+        component: ModalClientePage,
+        componentProps: {c}
+      }).then(modal => {
+        modal.present()
+        return modal.onDidDismiss();
+      }).then(({data}) => {
+        this.service.getALL().subscribe(resposta => {
+          this.clientes = resposta;
+        });
+      });
+  }
+
 }

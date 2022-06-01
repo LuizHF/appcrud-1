@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'modal-cliente',
     loadChildren: () => import('./paginas/modal-cliente/modal-cliente.module').then( m => m.ModalClientePageModule)
+  },
+  {
+    path: 'produto',
+    loadChildren: () => import('./paginas/produto/produto.module').then( m => m.ProdutoPageModule)
   }
 ];
 
