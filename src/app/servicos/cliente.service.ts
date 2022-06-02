@@ -19,6 +19,9 @@ export interface Cliente{
 })
 
 export class ProdutoService {
+  getAll() {
+    throw new Error('Method not implemented.');
+  }
 
   private url = 'http;//localhost/apiAppCrud/apiProduto.php';
 

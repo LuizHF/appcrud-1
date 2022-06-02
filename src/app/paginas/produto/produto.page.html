@@ -1,9 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>produto</ion-title>
+  <ion-toolbar color = "succes">
+    <ion-title>Página de Produto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<ion-list>
+  <ion-item-sliding *ngFor="let produto of produtos">
+    <ion-item-options>
+    </ion-item-option color="danger" (click)="remover(produto.id)">Excluir</ion-item-options>
+    </ion-item-options>
+    <ion-item>{{produto.descricao}}</ion-item>
+  </ion-item-sliding>
+</ion-list>
 </ion-content>
