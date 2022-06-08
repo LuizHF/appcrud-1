@@ -12,6 +12,9 @@ export interface Produto{
   providedIn: 'root'
 })
 export class ProdutoService {
+  remove(id: any) {
+    throw new Error('Method not implemented.');
+  }
   private url ='http://localhost/apiAppCrud/apiProduto.php';
   
   constructor( private http: HttpClient) { } 

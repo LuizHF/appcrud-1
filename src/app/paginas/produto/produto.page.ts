@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Produto, ProdutoService } from 'src/app/servicos/produto.service';
-import { ModalProdutoPage } from '../modal-produto/modal-produto.page';
+//import { ModalProdutoPage } from '/modalProduto/modalProduto.page';
 
 @Component({
   selector: 'app-produto',
@@ -22,13 +22,13 @@ export class ProdutoPage implements OnInit {
 
   remover(id: any){
     this.service.remove(id).subscribe( () =>{
-      this.service.getAll().subscribe(resposta =>{
+      this.service.getAll().subscribe(resposta => {
         this.produtos = resposta;
     });
   });
   }
   
-  novoProduto(){
+  novoProduto(): void{
     this.modalCtrl.create({
       component: ModalProdutoPage
     }).then(modal => {
@@ -40,6 +40,18 @@ export class ProdutoPage implements OnInit {
       });
     });
   }
-
+  atuaizar(p: Produto){
+    this.modalCtrl.create({
+      component: ModalProdutoPage,
+      componentProps: {p}
+    }).then(modal => {
+      modal.present();
+      return modal.onDidDismiss();
+    }).then(({data}) => {
+      this.service.getAll().subscribe(resposta => {
+        this.produtos = resposta;
+      });
+    });
+  }
 }
 

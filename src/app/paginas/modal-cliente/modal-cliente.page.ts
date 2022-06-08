@@ -34,6 +34,7 @@ export class ModalClientePage implements OnInit {
     this.service.create(cliente).subscribe(resposta => {
       this.modalCtrl.dismiss();
     });
+    
   }else{
     this.service.create(cliente).subscribe(reposta => {
       this.modalCtrl.dismiss();
