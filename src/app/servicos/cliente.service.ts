@@ -18,16 +18,6 @@ export interface Cliente{
   providedIn: 'root'
 })
 
-export class ProdutoService {
-  getAll() {
-    throw new Error('Method not implemented.');
-  }
-
-  private url = 'http;//localhost/apiAppCrud/apiProduto.php';
-
-  constructor(private htpp: HttpClient ) { }
-}
-
 export class ClienteService {
 
   private url = 'http;//localhost/apiAppCrud/apiCliente';
@@ -49,4 +39,5 @@ export class ClienteService {
   update (cliente: Cliente, id: any) {
     return this.htpp.put(this.url+'?id=' + id, cliente);
   }
+ 
 }
