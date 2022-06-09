@@ -28,12 +28,12 @@ export class ClienteService {
     return this.htpp.get<[Cliente]>(this.url);
   }
 
-  remover(id: any){
+  remove(id: any){
     return this.htpp.delete(this.url+'?id=' + id);
   }
 
   create(cliente: Cliente) {
-    return this.htpp.post(this.url, cliente)
+    return this.htpp.post(this.url, cliente);
   }
 
   update (cliente: Cliente, id: any) {
