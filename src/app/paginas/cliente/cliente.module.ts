@@ -6,6 +6,8 @@ import { ClientePageRoutingModule } from './cliente-routing.module';
 import { ClientePage } from './cliente.page';
 //import { create } from '@domain';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,5 +17,5 @@ import { ClientePage } from './cliente.page';
   ],
   declarations: [ClientePage]
 })
-export class ClientePageModule {}
 
+export class ClientePageModule {}
